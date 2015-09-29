@@ -1,22 +1,21 @@
-var shuffle = function(array) {
-  var copy = [], n = array.length, i;
+function shuffle(array) {
+  var m = array.length, t, i;
 
   // While there remain elements to shuffle…
-  while (n) {
+  while (m) {
 
     // Pick a remaining element…
-    i = Math.floor(Math.random() * array.length);
+    i = Math.floor(Math.random() * m--);
+    console.log(m);
 
-    // If not already shuffled, move it to the new array.
-    if (i in array) {
-      copy.push(array[i]);
-      delete array[i];
-      n--;
-    }
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
   }
-
-  return copy;
+  return array;
 }
-var arr = [2,6,4,1,9,8,7];
+
+var arr = [2,6,4,1,9];
 var ans = shuffle(arr);
 console.log(ans);
